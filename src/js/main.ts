@@ -7,6 +7,7 @@ import * as pdfjsLib from 'pdfjs-dist';
 import '../css/styles.css';
 import { formatShortcutDisplay, formatStars } from './utils/helpers.js';
 import { APP_VERSION } from '../version.js';
+import { initTenant } from './middleware/tenant.js';
 import {
   initI18n,
   applyTranslations,
@@ -18,6 +19,7 @@ import {
 declare const __BRAND_NAME__: string;
 
 const init = async () => {
+  await initTenant();
   await initI18n();
   injectLanguageSwitcher();
   applyTranslations();
